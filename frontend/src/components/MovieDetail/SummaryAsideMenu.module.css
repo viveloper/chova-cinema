@@ -1,0 +1,52 @@
+.aside-menu {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.aside-menu button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #333;
+  margin-left: 40px;
+}
+.aside-menu .btn-link {
+  font-size: 28px;
+  transition: transform 0.3s ease;
+}
+.aside-menu .btn-link:hover {
+  transform: scale(1.2);
+}
+.aside-menu .btn-like {
+  font-size: 28px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.aside-menu .btn-like:hover {
+  transform: scale(1.2);
+}
+.aside-menu .btn-like .like-cnt {
+  font-size: 11px;
+  font-family: 'Roboto', 'Noto Sans KR';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  background-color: #fff;
+}
+.aside-menu .btn-ticketing {
+  font-size: 18px;
+  color: #fff;
+  padding: 12px 48px;
+  background-color: #ff243e;
+  border: 2px solid #ff243e;
+  border-radius: 52px;
+  font-family: 'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+  transition: background-color 0.3s ease;
+}
+.aside-menu .btn-ticketing:hover {
+  background-color: #fff;
+  color: #ff243e;
+}

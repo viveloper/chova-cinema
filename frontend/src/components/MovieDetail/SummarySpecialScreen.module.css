@@ -1,0 +1,12 @@
+.special-icons-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 400px;
+}
+.special-icon {
+  display: inline-block;
+  margin: 5px 5px 0 0;
+}
+.special-icon img {
+  display: inline;
+}

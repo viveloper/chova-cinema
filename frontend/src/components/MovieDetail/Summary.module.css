@@ -1,0 +1,9 @@
+.summary {
+  margin-top: 28px;
+}
+
+.summary-container {
+  position: relative;
+  min-height: 240px;
+  padding-left: 245px;
+}

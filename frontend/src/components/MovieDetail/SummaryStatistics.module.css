@@ -1,0 +1,22 @@
+.statistics {
+  display: flex;
+  align-items: center;
+  padding-bottom: 17px;
+  border-bottom: 1px solid #ddd;
+}
+.statistics li {
+  margin-right: 25px;
+}
+.statistics-type {
+  font-size: 16px;
+}
+.statistics-value {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Roboto', 'Noto Sans KR';
+  margin-left: 10px;
+}
+.statistics-value .icon-star {
+  font-size: 14px;
+  color: #ff9900;
+}

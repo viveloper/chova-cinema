@@ -1,0 +1,11 @@
+.ticketing-block {
+  background-color: #444;
+  padding: 50px 0;
+}
+.ticketing-center {
+  width: 1280px;
+  height: 870px;
+  margin: 0 auto;
+  background-color: #fff;
+  display: flex;
+}

@@ -1,0 +1,106 @@
+.card {
+  width: 184px;
+}
+
+.card .imgContainer {
+  position: relative;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.card .index {
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  font-size: 26px;
+  font-style: italic;
+  font-weight: bold;
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.card .imgContainer .hoverLayer {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card .imgContainer:hover .hoverLayer {
+  opacity: 1;
+}
+
+.card .hoverLayer a {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  margin: 5px 0;
+  line-height: 28px;
+  width: 130px;
+  text-align: center;
+}
+
+.card .info {
+  color: #fff;
+  padding: 10px 0;
+}
+
+.card.light .info {
+  color: #000;
+}
+
+.card .info .title {
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card .info .subInfo {
+  font-size: 11px;
+  text-align: center;
+}
+
+.card .info .subInfo .rate {
+}
+
+.card .info .subInfo .star {
+}
+
+.card .info .subInfo .star .icon {
+  color: #ffae00;
+}
+
+.card .info .subInfo .dday {
+  color: #f53a0b;
+}
+
+.card .info .subInfo > span {
+  position: relative;
+  padding: 0 10px;
+}
+
+.card .info .subInfo > span:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 9px;
+  margin-top: -5px;
+  border-left: 1px solid #707070;
+}

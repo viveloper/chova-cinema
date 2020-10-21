@@ -1,0 +1,27 @@
+.detail-info {
+  margin-top: 20px;
+  margin-bottom: 17px;
+}
+.detail-info-type {
+  font-size: 13px;
+  margin-right: 10px;
+}
+.detail-info-value {
+  font-size: 13px;
+  color: #666;
+  margin-right: 10px;
+  position: relative;
+}
+.detail-info-value.separator {
+  padding-left: 10px;
+}
+.detail-info-value.separator::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 1px;
+  height: 9px;
+  background-color: #ccc;
+}

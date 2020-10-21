@@ -1,0 +1,30 @@
+.type-menu {
+  background-color: #f7f7f7;
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+.select-sort-type {
+  width: 180px;
+  height: 30px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.view-type .btn-view-type {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: 14px;
+  cursor: pointer;
+}
+.view-type .btn-view-type .icon {
+  font-size: 20px;
+  color: #ccc;
+}
+.view-type .btn-view-type.active .icon {
+  color: #333;
+}

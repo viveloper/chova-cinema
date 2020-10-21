@@ -1,0 +1,40 @@
+.score-box {
+  text-align: center;
+  color: #666;
+  margin: 36px 0;
+}
+.score-box .score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.score-box .score .text {
+  font-size: 15px;
+  color: #333;
+  padding-bottom: 3px;
+}
+.score-box .score .icon-star {
+  font-size: 18px;
+  color: orange;
+  margin: 0 8px;
+  padding-bottom: 3px;
+}
+.score-box .score .avg {
+  font-size: 35px;
+  font-weight: bold;
+  color: #000;
+  font-family: 'Roboto', 'Noto Sans KR', 'dotum', 'sans-serif';
+}
+.score-box .score .slash {
+  font-size: 16px;
+  margin: 0 8px;
+  padding-top: 3px;
+}
+.score-box .score .max {
+  font-size: 21px;
+  padding-top: 6px;
+}
+.score-box .info {
+  font-size: 13px;
+}

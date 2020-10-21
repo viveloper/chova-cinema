@@ -1,0 +1,11 @@
+.preference {
+  flex: 0 0 49%;
+}
+.preference .title {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.preference .prefer-group {
+  display: flex;
+  justify-content: space-between;
+}

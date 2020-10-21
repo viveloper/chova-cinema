@@ -1,0 +1,20 @@
+.tabs {
+  margin-top: 32px;
+  margin-bottom: 28px;
+}
+.tabs .tab {
+  background: transparent;
+  width: 50%;
+  font-size: 15px;
+  font-family: 'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+  color: #888;
+  padding: 12px 0;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.tabs .tab.active {
+  border-bottom: 2px solid #111;
+  color: #000;
+}

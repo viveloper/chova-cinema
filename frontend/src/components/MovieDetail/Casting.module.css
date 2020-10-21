@@ -1,0 +1,32 @@
+.casting-container {
+  margin-top: 50px;
+}
+.title {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.casting {
+  display: flex;
+  flex-wrap: wrap;
+}
+.staff {
+  display: flex;
+  width: 245px;
+  margin-bottom: 30px;
+}
+.staff-image {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.staff-info {
+  width: 155px;
+  padding: 20px 0 0 30px;
+}
+.staff-info .name {
+  font-size: 13px;
+}
+.staff-info .role {
+  font-size: 13px;
+  color: #666;
+}

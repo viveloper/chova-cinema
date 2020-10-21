@@ -1,0 +1,45 @@
+.movieList {
+  margin: 0 auto;
+  position: relative;
+}
+
+.listContianer {
+  overflow: hidden;
+}
+
+.movies {
+  display: flex;
+  list-style: none;
+  transition: transform 0.3s ease;
+}
+
+.movie {
+  margin-right: 15px;
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 30px));
+  width: calc(100% + 50px);
+  display: flex;
+  justify-content: space-between;
+}
+.nav button {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.nav button.hide {
+  visibility: hidden;
+}
+.prev,
+.next {
+  color: #bbb;
+}
+.nav button:hover .prev,
+.nav button:hover .next {
+  color: #eee;
+}

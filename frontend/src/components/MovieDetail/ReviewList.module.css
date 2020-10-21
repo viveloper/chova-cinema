@@ -1,0 +1,117 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ccc;
+}
+.header .total {
+  font-size: 15px;
+}
+.header button {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #666;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.header button::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin: -2px 8px 0 0;
+  background: #ddd;
+  border-radius: 50%;
+  vertical-align: middle;
+  transition: all 0.3s ease;
+}
+.header button.active::before {
+  background: #ff7787;
+}
+
+.items .item {
+  position: relative;
+  width: 980px;
+  min-height: 125px;
+  padding: 20px 0 15px 68px;
+  border-top: 1px solid #eee;
+}
+.items .item.own {
+  background-color: #f8f8f8;
+}
+.items .item img {
+  position: absolute;
+  left: 0;
+  top: 20px;
+}
+.items .item .top-info {
+  margin-bottom: 12px;
+}
+.items .item .top-info .name {
+  font-size: 12px;
+  margin-right: 9px;
+  padding-right: 11px;
+  position: relative;
+}
+.items .item .top-info .name::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 3px;
+  right: 0;
+  width: 1px;
+  height: 12px;
+  background: #ccc;
+}
+.items .item .top-info .score {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Roboto', 'Noto Sans KR', 'dotum', 'sans-serif';
+}
+.items .item .top-info .score .icon-star {
+  color: orange;
+  font-size: 13px;
+  margin-right: 3px;
+}
+.items .item .review-info {
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+.items .item .bottom-info .date {
+  font-size: 11px;
+  color: #666;
+}
+.items .item .bottom-info .recommend {
+  font-size: 12px;
+  font-family: 'Roboto', 'Noto Sans KR', 'dotum', 'sans-serif';
+  cursor: pointer;
+}
+.items .item .bottom-info .recommend .icon-thumbs-up {
+  font-size: 14px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+.items .item .bottom-info .recommend .icon-thumbs-up.liked {
+  color: red;
+}
+.items .item .user-control {
+  position: absolute;
+  top: 20px;
+  right: 0;
+}
+.items .item .user-control button {
+  display: inline-block;
+  background: #fff;
+  height: 25px;
+  padding: 0 14px;
+  font-family: 'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+  font-size: 11px;
+  outline: none;
+  border: 1px solid #ddd;
+  border-radius: 52px;
+  margin-left: 4px;
+  cursor: pointer;
+}

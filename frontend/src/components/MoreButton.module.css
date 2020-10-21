@@ -1,0 +1,12 @@
+.btn-more {
+  font-size: 12px;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.btn-more:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}

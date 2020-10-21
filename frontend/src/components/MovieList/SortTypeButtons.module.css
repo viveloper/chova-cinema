@@ -1,0 +1,8 @@
+.sort-type-btns {
+  font-size: 12px;
+  color: #333;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}

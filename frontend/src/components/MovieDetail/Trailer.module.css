@@ -1,0 +1,57 @@
+.trailer-container {
+  margin-top: 40px;
+  overflow: hidden;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.header .title {
+  font-size: 15px;
+  font-weight: 400;
+}
+.header .nav button {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 22px;
+  color: #888;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.header .nav button:hover {
+  color: #333;
+}
+.trailer {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.trailer .item {
+  margin-right: 20.5px;
+  position: relative;
+  cursor: pointer;
+}
+.trailer .item::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: 49px;
+  height: 54px;
+  transform: translate(-50%, calc(-50% - 12px));
+  background-image: url('/img/icons/btn_main_visual_play.png');
+}
+.trailer .item:hover {
+  opacity: 0.8;
+}
+.media-image {
+  object-fit: cover;
+}
+.media-title {
+  margin-top: 11px;
+  text-align: center;
+  font-size: 13px;
+}

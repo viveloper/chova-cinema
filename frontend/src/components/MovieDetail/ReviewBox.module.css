@@ -1,0 +1,78 @@
+.review-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin-bottom: 55px;
+}
+.score-box {
+  background-color: #f8f8f8;
+  flex: 0 0 320px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  text-align: center;
+}
+.score-box .text-score {
+  display: block;
+  font-size: 13px;
+  padding-top: 12px;
+}
+.score-box .text-score .score {
+  font-family: 'Roboto', 'Noto Sans KR';
+  font-size: 28px;
+}
+.score-box .star-score {
+  padding: 5px 0;
+}
+.score-box .star-score .icon-star {
+  font-size: 14px;
+  margin: 0 3px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.text-box {
+  flex: 0 0 540px;
+}
+.text-box textarea {
+  display: block;
+  width: 100%;
+  height: 70px;
+  padding: 13px 18px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: 'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+}
+.text-box .text-count-container {
+  display: block;
+  height: 20px;
+  font-size: 10px;
+  color: #666;
+  text-align: right;
+  padding-bottom: 5px;
+  padding-right: 10px;
+}
+.text-box .text-count-container .count {
+  color: #000;
+  font-weight: bold;
+}
+.btn-write {
+  display: block;
+  flex: 0 0 120px;
+  background: #666;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 15px;
+  font-family: 'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-write:hover {
+  background: #888;
+}
+.score-box,
+.text-box,
+.btn-write {
+  height: 90px;
+}

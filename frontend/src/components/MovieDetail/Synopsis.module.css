@@ -1,0 +1,27 @@
+.synopsis {
+  flex: 0 0 49%;
+}
+.synopsis .title {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.synopsis .content {
+  height: 130px;
+  font-size: 13px;
+  line-height: 1.8;
+  overflow: scroll;
+}
+.synopsis .content::-webkit-scrollbar {
+  width: 4px;
+}
+.synopsis .content::-webkit-scrollbar-track {
+  /* box-shadow: inset 0 0 5px grey; */
+  /* border-radius: 10px; */
+}
+.synopsis .content::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 5px;
+}
+.synopsis .content::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

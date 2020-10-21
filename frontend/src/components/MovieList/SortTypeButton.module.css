@@ -1,0 +1,19 @@
+.sort-type-btn {
+  padding: 0 10px;
+  position: relative;
+}
+.sort-type-btn:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  border-left: 1px solid #888;
+  height: 12px;
+  margin-top: 5px;
+}
+.sort-type-btn a {
+  font-size: 14px;
+  color: #999;
+}
+.sort-type-btn a.active {
+  color: #333;
+}

@@ -1,0 +1,14 @@
+.view-grade {
+  border-radius: 50%;
+  position: relative;
+}
+.view-grade .text {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 1px));
+}

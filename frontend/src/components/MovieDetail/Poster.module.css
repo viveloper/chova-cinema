@@ -1,0 +1,71 @@
+.poster {
+  margin-top: 50px;
+}
+.title {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 12px;
+}
+.small-trailer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.small-trailer button {
+  display: block;
+  flex: 0 0 40px;
+  height: 150px;
+  background: transparent;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+}
+.small-trailer button:hover {
+  color: #333;
+}
+.small-trailer .items-container {
+  overflow: hidden;
+}
+.small-trailer .items {
+  display: flex;
+  /* flex: 0 0 900px; */
+  transition: transform 0.3s ease;
+}
+.small-trailer .items .item img {
+  object-fit: contain;
+}
+
+.large-trailer {
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.large-trailer button {
+  display: block;
+  flex: 0 0 107px;
+  height: 510px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 36px;
+  color: #999;
+  cursor: pointer;
+}
+.large-trailer button:hover {
+  color: #ddd;
+}
+.large-trailer .items-container {
+  overflow: hidden;
+}
+.large-trailer .items {
+  display: flex;
+  /* flex: 0 0 766px; */
+  transition: transform 0.3s ease;
+}
+.large-trailer .items .item img {
+  object-fit: contain;
+}
