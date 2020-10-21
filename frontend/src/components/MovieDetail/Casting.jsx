@@ -7,7 +7,7 @@ const Casting = ({ items }) => {
       <h4 className={classes['title']}>감독 및 배우</h4>
       <ul className={classes['casting']}>
         {items.map((item) => (
-          <li key={item.StaffImage} className={classes['staff']}>
+          <li key={item.StaffName} className={classes['staff']}>
             <img
               src={item.StaffImage}
               alt="Staff"
