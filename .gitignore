@@ -12,15 +12,12 @@ node_modules/
 # production
 /build
 
-<<<<<<< HEAD
-=======
 # data files
 /backend/data-downloader/data
 /backend/data-downloader/media
 /backend/public/media
 /backend/data
 
->>>>>>> react-cinema-server/master
 # misc
 .DS_Store
 .env.local
