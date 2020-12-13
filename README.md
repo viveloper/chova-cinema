@@ -13,7 +13,7 @@
 - Memoization을 이용한 컴포넌트 렌더링 최적화.
 - CSS Module 시스템 및 Styled-Components(CSS in JS) 사용.
 
-> Express 임시 서버 구현 (2020.07.18일자 롯데 시네마 데이터 스냅샷)
+> Express 임시 서버 구현 (2020.07.16일자 롯데 시네마 데이터 스냅샷)
 
 ## Demo
 
