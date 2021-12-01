@@ -11,11 +11,13 @@ node_modules/
 
 # production
 /build
+/frontend/build
 
 # data files
 /backend/data-downloader/data
 /backend/data-downloader/media
 /backend/public/media
+/backend/public/static
 /backend/data
 
 # misc
