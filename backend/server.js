@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const dotenv = require('dotenv');
 const cors = require('cors');
+const axios = require('axios');
 
 // Load env vars
 dotenv.config({ path: './config/config.env' });
@@ -16,6 +17,9 @@ app.use(express.json());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
+
+// axios config
+axios.defaults.baseURL = process.env.BASE_URL;
 
 // Route files
 const movies = require('./routes/movies');
@@ -39,7 +43,7 @@ app.get('*', (req, res) =>
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 );
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5500;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
