@@ -4,12 +4,11 @@
 
 ## 프로젝트 설명
 
-- 상용 프론트엔드 서비스의 UI와 기능을 최대한 똑같이 구현
+- 상용 프론트엔드 서비스의 UI와 기능 구현
 - 영화정보 / 예매 / 관람평 / 추천 등 핵심 기능 구현.
 - 단일 페이지 어플리케이션 (React)
-- 글로벌 상태관리 및 FLUX Architecture (Redux, Redux-Saga)
-- 함수형 컴포넌트와 React Hooks 사용.
-- 컨테이너 컴포넌트와 프레젠테이셔널 컴포넌트 분리.
+- 글로벌 상태관리 및 비동기 데이터 처리 (Redux, Redux-Saga)
+- 컨테이너 컴포넌트 / 프레젠테이셔널 컴포넌트 구조.
 - Memoization을 이용한 컴포넌트 렌더링 최적화.
 - CSS Module 시스템 및 Styled-Components(CSS in JS) 사용.
 
@@ -43,7 +42,7 @@ npm install
 
 ```
 # backend
-npm run dev
+npm start
 
 # frontend
 npm start
