@@ -1,20 +1,20 @@
-const fs = require('fs');
-const path = require('path');
-const { v4: uuidv4 } = require('uuid');
 const { getRandomInt } = require('../utils');
+const { query } = require('../api');
 
 // @desc    Get review
 // @route   GET /api/review
 // @access  Public
-exports.getReview = (req, res, next) => {
+exports.getReview = async (req, res, next) => {
   const movieCode = req.query.movieCode;
   const page = req.query.page ? req.query.page : 1;
   const count = req.query.count ? req.query.count : 10;
   const sortType = req.query.sortType ? req.query.sortType : 'recent';
 
-  const sourceDataPath = `../data/movieDetail/${movieCode}-review.json`;
-  const jsonData = fs.readFileSync(path.resolve(__dirname, sourceDataPath));
-  const review = JSON.parse(jsonData);
+  const review = await query({
+    key: `review/${movieCode}`,
+    url: `/data/movieDetail/${movieCode}-review.json`,
+  });
+
   const sortedReview = {
     ...review,
     TotalReviewItems: {
@@ -60,13 +60,14 @@ exports.getReview = (req, res, next) => {
 // @desc    Post review
 // @route   GET /api/review
 // @access  Private
-exports.addReview = (req, res, next) => {
+exports.addReview = async (req, res, next) => {
   const { movieCode, reviewText, evaluation } = req.body;
   const loginUser = req.user;
 
-  const sourceDataPath = `../data/movieDetail/${movieCode}-review.json`;
-  const jsonData = fs.readFileSync(path.resolve(__dirname, sourceDataPath));
-  const reviewData = JSON.parse(jsonData);
+  const reviewData = await query({
+    key: `review/${movieCode}`,
+    url: `/data/movieDetail/${movieCode}-review.json`,
+  });
 
   const userReview = reviewData.TotalReviewItems.Items.find(
     (item) => item.MemberID === loginUser.id
@@ -109,25 +110,16 @@ exports.addReview = (req, res, next) => {
     ) / reviewCount
   );
 
-  fs.writeFileSync(
-    path.resolve(__dirname, sourceDataPath),
-    JSON.stringify(reviewData)
-  );
+  const usersData = await query({
+    key: 'users',
+    url: '/data/users/users.json',
+  });
 
-  const jsonUserData = fs.readFileSync(
-    path.resolve(__dirname, '../data/users/users.json')
-  );
-  const usersData = JSON.parse(jsonUserData);
   const targetUser = usersData.users.find(
     (user) => user.email === loginUser.email
   );
 
   targetUser.reviewList.push(reviewId);
-
-  fs.writeFileSync(
-    path.resolve(__dirname, '../data/users/users.json'),
-    JSON.stringify(usersData)
-  );
 
   res.status(200).json({ success: true, review: newReview });
 };
@@ -135,14 +127,16 @@ exports.addReview = (req, res, next) => {
 // @desc    Delete review
 // @route   DELETE /api/review
 // @access  Private
-exports.deleteReview = (req, res, next) => {
+exports.deleteReview = async (req, res, next) => {
   const reviewId = parseInt(req.params.reviewId);
   const { movieCode } = req.body;
   const loginUser = req.user;
 
-  const sourceDataPath = `../data/movieDetail/${movieCode}-review.json`;
-  const jsonData = fs.readFileSync(path.resolve(__dirname, sourceDataPath));
-  const reviewData = JSON.parse(jsonData);
+  const reviewData = await query({
+    key: `review/${movieCode}`,
+    url: `/data/movieDetail/${movieCode}-review.json`,
+  });
+
   const targetReview = reviewData.TotalReviewItems.Items.find(
     (item) => item.ReviewID === reviewId
   );
@@ -166,15 +160,11 @@ exports.deleteReview = (req, res, next) => {
     ) / reviewCount
   );
 
-  fs.writeFileSync(
-    path.resolve(__dirname, sourceDataPath),
-    JSON.stringify(reviewData)
-  );
+  const usersData = await query({
+    key: 'users',
+    url: '/data/users/users.json',
+  });
 
-  const jsonUserData = fs.readFileSync(
-    path.resolve(__dirname, '../data/users/users.json')
-  );
-  const usersData = JSON.parse(jsonUserData);
   const targetUser = usersData.users.find(
     (user) => user.email === loginUser.email
   );
@@ -183,24 +173,20 @@ exports.deleteReview = (req, res, next) => {
     (item) => item !== reviewId
   );
 
-  fs.writeFileSync(
-    path.resolve(__dirname, '../data/users/users.json'),
-    JSON.stringify(usersData)
-  );
-
   res.status(200).json({ success: true, review: targetReview });
 };
 
 // @desc    Edit review
 // @route   PUT /api/review
 // @access  Private
-exports.editReview = (req, res, next) => {
+exports.editReview = async (req, res, next) => {
   const reviewId = parseInt(req.params.reviewId);
   const { movieCode, reviewText, evaluation, recommend } = req.body;
 
-  const sourceDataPath = `../data/movieDetail/${movieCode}-review.json`;
-  const jsonData = fs.readFileSync(path.resolve(__dirname, sourceDataPath));
-  const reviewData = JSON.parse(jsonData);
+  const reviewData = await query({
+    key: `review/${movieCode}`,
+    url: `/data/movieDetail/${movieCode}-review.json`,
+  });
 
   const targetReview = reviewData.TotalReviewItems.Items.find(
     (item) => item.ReviewID === reviewId
@@ -211,10 +197,10 @@ exports.editReview = (req, res, next) => {
   if (recommend) {
     const loginUser = req.user;
 
-    const jsonUserData = fs.readFileSync(
-      path.resolve(__dirname, '../data/users/users.json')
-    );
-    const usersData = JSON.parse(jsonUserData);
+    const usersData = await query({
+      key: 'users',
+      url: '/data/users/users.json',
+    });
     const targetUser = usersData.users.find(
       (user) => user.email === loginUser.email
     );
@@ -232,11 +218,6 @@ exports.editReview = (req, res, next) => {
     } else {
       targetUser.reviewLikeList.push(reviewId);
     }
-
-    fs.writeFileSync(
-      path.resolve(__dirname, '../data/users/users.json'),
-      JSON.stringify(usersData)
-    );
   }
 
   reviewData.ReviewCounts.MarkAvg = Math.floor(
@@ -244,11 +225,6 @@ exports.editReview = (req, res, next) => {
       (acc, review) => acc + review.Evaluation,
       0
     ) / reviewData.TotalReviewItems.Items.length
-  );
-
-  fs.writeFileSync(
-    path.resolve(__dirname, sourceDataPath),
-    JSON.stringify(reviewData)
   );
 
   res.status(200).json({ success: true, review: targetReview });

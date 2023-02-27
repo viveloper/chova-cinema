@@ -1,6 +1,6 @@
-const fs = require('fs');
-const path = require('path');
-const axios = require('axios');
+const immer = require('immer');
+const { query } = require('../api');
+const { getS3FullPath } = require('../utils');
 
 // @desc    Get movies
 // @route   GET /api/movies
@@ -9,32 +9,45 @@ exports.getMovies = async (req, res, next) => {
   let result = [];
 
   if (req.query.type === 'current') {
-    const { data: movies } = await axios.get('/data/home/movies.json');
+    const movies = await query({
+      key: 'movies/current',
+      url: '/data/home/movies.json',
+    });
     result = movies.Movies.Items[0].Items.filter(
       (item) => item.MoviePlayYN === 'Y'
     );
   } else if (req.query.type === 'pre') {
-    const { data: movies } = await axios.get('/data/home/movies.json');
+    const movies = await query({
+      key: 'movies/pre',
+      url: '/data/home/movies.json',
+    });
     result = movies.Movies.Items[0].Items.filter(
       (item) => item.MoviePlayYN === 'N'
     );
   } else if (req.query.type === 'arte') {
-    const { data: movies } = await axios.get('/data/movies/arteMovieList.json');
+    const movies = await query({
+      key: 'movies/arte',
+      url: '/data/movies/arteMovieList.json',
+    });
     result = movies.Movies.Items;
   } else if (req.query.type === 'opera') {
-    const { data: movies } = await axios.get(
-      '/data/movies/operaMovieList.json'
-    );
+    const movies = await query({
+      key: 'movies/opera',
+      url: '/data/movies/operaMovieList.json',
+    });
     result = movies.Movies.Items;
   } else {
-    const { data: movies } = await axios.get('/data/home/movies.json');
+    const movies = await query({
+      key: 'movies',
+      url: '/data/home/movies.json',
+    });
     result = movies.Movies.Items[0].Items;
   }
 
   res.status(200).json(
     result.map((movie) => ({
       ...movie,
-      PosterURL: `${process.env.BASE_URL}${movie.PosterURL}`,
+      PosterURL: getS3FullPath(movie.PosterURL),
     }))
   );
 };
@@ -45,9 +58,21 @@ exports.getMovies = async (req, res, next) => {
 exports.getMovieDetail = async (req, res, next) => {
   const movieCode = req.params.movieCode;
 
-  const { data: movieDetail } = await axios.get(
-    `/data/movieDetail/${movieCode}.json`
-  );
+  const movieDetail = await query({
+    key: `movieDetail/${movieCode}`,
+    url: `/data/movieDetail/${movieCode}.json`,
+  });
 
-  res.status(200).json(movieDetail);
+  const newMovieDetail = immer.produce(movieDetail, (draft) => {
+    draft.Casting.Items.forEach((item) => {
+      item.StaffImage = getS3FullPath(item.StaffImage);
+    });
+    draft.Movie.PosterURL = getS3FullPath(draft.Movie.PosterURL);
+    draft.Trailer.Items.forEach((item) => {
+      item.ImageURL = getS3FullPath(item.ImageURL);
+      item.MediaURL = getS3FullPath(item.MediaURL);
+    });
+  });
+
+  res.status(200).json(newMovieDetail);
 };

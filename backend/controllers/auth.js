@@ -1,18 +1,17 @@
-const fs = require('fs');
-const path = require('path');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { getRandomInt } = require('../utils');
+const { query } = require('../api');
 
 // @desc    Signin user
 // @route   POST /api/auth/signin
 // @access  Public
 exports.signin = async (req, res, next) => {
   const { name, email, password, confirmPassword } = req.body;
-  const jsonData = fs.readFileSync(
-    path.resolve(__dirname, '../data/users/users.json')
-  );
-  const usersData = JSON.parse(jsonData);
+  const usersData = await query({
+    key: 'users',
+    url: `/data/users/users.json`,
+  });
 
   if (usersData.users.find((user) => user.email === email)) {
     return res.status(400).json({
@@ -41,11 +40,6 @@ exports.signin = async (req, res, next) => {
     ticketingList: [],
   });
 
-  fs.writeFileSync(
-    path.resolve(__dirname, '../data/users/users.json'),
-    JSON.stringify(usersData)
-  );
-
   const token = getToken({ id, name, email });
 
   res.status(200).json({
@@ -67,10 +61,12 @@ exports.signin = async (req, res, next) => {
 // @access  Public
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
-  const jsonData = fs.readFileSync(
-    path.resolve(__dirname, '../data/users/users.json')
-  );
-  const usersData = JSON.parse(jsonData);
+
+  const usersData = await query({
+    key: 'users',
+    url: `/data/users/users.json`,
+  });
+
   const user = usersData.users.find((user) => user.email === email);
 
   if (!email || !password)

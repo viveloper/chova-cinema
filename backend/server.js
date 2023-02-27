@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // axios config
-axios.defaults.baseURL = process.env.BASE_URL;
+axios.defaults.baseURL = process.env.S3_BASE_URL;
 
 // Route files
 const movies = require('./routes/movies');
